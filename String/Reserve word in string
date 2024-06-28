@@ -1,0 +1,42 @@
+151. Reverse Words in a String
+
+
+class Solution {
+    public String reverseWords(String s) {
+     
+       String st="";
+       for(int i= s.length()-1;i>=0;i--){
+        st+=s.charAt(i);
+       }
+       char[] arr= st.toCharArray();
+
+       int left=0;
+       int rigth=0;
+
+       while(rigth<s.length()){
+        if(arr[rigth]==' '){
+            reserve(arr, left, rigth-1);
+            left= rigth+1;
+
+        }
+        rigth++;
+       }
+
+       reserve(arr,left, rigth-1);
+
+       return new String(arr);
+      
+        
+    }
+    private void reserve(char[] arr, int left, int rigth){
+        while(left<rigth){
+            char temp=arr[left];
+            arr[left]=arr[rigth];
+            arr[rigth]=temp;
+            left++;
+            rigth--;
+        }
+
+    }
+
+}
