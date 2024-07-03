@@ -1,0 +1,34 @@
+Sort Characters By Frequency
+
+
+
+class Solution {
+    public String frequencySort(String s) {
+       
+       Map<Character,Integer> map = new HashMap<>();
+       for( char i: s.toCharArray()){
+        map.put(i,map.getOrDefault(i,0)+1);
+       }
+
+         PriorityQueue<Character> store = new PriorityQueue<>((a,b)->(map.get(b)-map.get(a)));
+
+
+      
+
+       for(char key:map.keySet()){
+        store.add(key);
+       }
+
+       String ans="";
+       while(store.size()>0){
+        char a= store.poll();
+        for(int i=0;i<map.get(a);i++){
+            ans+=a;
+        }
+       }
+       return ans;
+
+
+        
+    }
+}
